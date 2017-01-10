@@ -27,13 +27,6 @@ public void setVisited(boolean n){
 	this.visited = n;
 }
 
-public double Distance(City c1, City c2){
-	double deltaX = c1.XPOS - c2.XPOS;
-	double deltaY = c1.YPOS - c2.YPOS;
-	double distance  = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
-	return distance;
-}
-
 }
 
 //so i have an xy position for every city
