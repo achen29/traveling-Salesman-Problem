@@ -8,7 +8,8 @@ public class BruteForce{
 	combolist.remove(0);
 	for(int i = combolist.size() - 1; i > 0; i --){
 	    Routeorder.add(combolist.get(keeper/factorial(i)));
-	    keeper = keeper - (keeper/factorial(i)) * factorial(i);
+	    combolist.remove(keeper/factorial(i));
+	    keeper = keeper%factorial(i);
 	}
 	Routeorder.add(combolist.get(0));
 	Routeorder.add(a.get(0));
