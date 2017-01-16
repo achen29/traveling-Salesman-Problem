@@ -1,19 +1,18 @@
 import java.util.ArrayList;
 public class BruteForce{
-    public double PermSolver(ArrayList<City> a, int b){
+    public ArrayList<City> PermSolver(ArrayList<City> a, int b){
 	ArrayList<City> combolist = a;
+	ArrayList<City> Routeorder = new ArrayList<City>();
 	int keeper = b;
-	int[]matrix = new int[a.size()];
-	for (int i = 0; i < combolist.size(); i ++){
-	    matrix[i] = keeper/(combolist.size() - 1 - i);
-	    keeper = keeper - (keeper/(combolist.size() - 1 - i) * (combolist.size() - 1 - i));
+	Routeorder.add(combolist.get(0));
+	combolist.remove(0);
+	for(int i = combolist.size() - 1; i > 0; i --){
+	    Routeorder.add(combolist.get(keeper/factorial(i)));
+	    keeper = keeper - (keeper/factorial(i)) * factorial(i);
 	}
-        ArrayList<City> routeorder = new ArrayList<City>();
-	for (int i = 0; i < a.size(); i ++){
-	    routeorder.add(combolist.get(matrix[i]));
-	    combolist.remove(matrix[i]);
-	}
-	return DistSolver(routeorder);
+	Routeorder.add(combolist.get(0));
+	Routeorder.add(a.get(0));
+	return Routeorder;
     }
     public double DistSolver(ArrayList<City> c){
 	double dist = 0;
@@ -23,12 +22,28 @@ public class BruteForce{
 	dist = c.get(c.size()-1).Distance(c.get(0));
 	return dist;
     }
-    public ArrayList<City>[] Solution(ArrayList<City> c){
-	int factorial = 1;
-	for (int i = c.size(); i > 0; i --){
-	    factorial = factorial * i;
+    public int factorial(int number){
+	int fact = number;
+	    for(int i = number; i > 0; i--){
+		number = number * i;
+	    }
+	    return fact;
+    }
+    public ArrayList<ArrayList<City>> Solution(ArrayList<City> c){
+	int size = c.size() - 1;
+	ArrayList<ArrayList<City>> routelist = new ArrayList<ArrayList<City>>();
+	double current = 0;
+	for(int i = 0; i < size; i ++){
+	    double compare = DistSolver(PermSolver(c,i));
+	    if (compare > current) {
+		routelist.clear();
+		routelist.add(PermSolver(c,i));
+		current = compare;
+	    }
+	    else if(compare ==current){
+		routelist.add(PermSolver(c,i));
+	    }
 	}
-	for (int i = 0; i < factorial; i ++){
-	}
+	return routelist;
     }
 }
