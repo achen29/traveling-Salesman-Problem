@@ -11,6 +11,8 @@ public class Tester{
 	List.add(TX);
 	List.add(AK);
 	BruteForce brute = new BruteForce();
+	Route r = new Route(List);
+	System.out.println(r.toStringR());
 	System.out.println(brute.factorial(5));
 	System.out.println(NY.Distance(CA));
 	System.out.println(CA.Distance(TX));

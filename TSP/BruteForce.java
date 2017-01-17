@@ -40,10 +40,10 @@ public class BruteForce{
     public ArrayList<ArrayList<City>> Solution(ArrayList<City> c){
 	int size = c.size() - 1;
 	ArrayList<ArrayList<City>> routelist = new ArrayList<ArrayList<City>>();
-	double current = 0;
+	double current = DistSolver(c);
 	for(int i = 0; i < factorial(size)/2; i ++){
 	    double compare = DistSolver(PermSolver(c,i));
-	    if (compare > current) {
+	    if (compare < current) {
 		routelist.clear();
 		routelist.add(PermSolver(c,i));
 		current = compare;

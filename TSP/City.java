@@ -25,5 +25,10 @@ public class City{
 	double distance  = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
 	return distance;
     }
+    public String toString(){
+	String City = "";
+	City = City + name +":"+ XPOS +","+ YPOS;
+	return City;
+    }
 }
 	
