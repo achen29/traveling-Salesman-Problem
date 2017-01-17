@@ -8,10 +8,17 @@ public class Tester{
 	ArrayList<City> List = new ArrayList<City>();
 	List.add(NY);
 	List.add(CA);
-	List.add(AK);
 	List.add(TX);
+	List.add(AK);
 	BruteForce brute = new BruteForce();
-	System.out.print(brute.Solution(List));
-	
+	System.out.println(brute.factorial(5));
+	System.out.println(NY.Distance(CA));
+	System.out.println(CA.Distance(TX));
+	System.out.println(brute.DistSolver(List));
+	System.out.println(brute.PermSolver(List,0));
+	System.out.println(brute.PermSolver(List,1));
+	System.out.println(brute.PermSolver(List,2));
+	System.out.println(brute.DistSolver(brute.PermSolver(List,0)));
+	System.out.println(brute.Solution(List));
     }
 }
