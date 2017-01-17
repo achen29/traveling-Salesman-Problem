@@ -41,7 +41,7 @@ public class BruteForce{
 	int size = c.size() - 1;
 	ArrayList<ArrayList<City>> routelist = new ArrayList<ArrayList<City>>();
 	double current = 0;
-	for(int i = 0; i < size; i ++){
+	for(int i = 0; i < factorial(size)/2; i ++){
 	    double compare = DistSolver(PermSolver(c,i));
 	    if (compare > current) {
 		routelist.clear();
